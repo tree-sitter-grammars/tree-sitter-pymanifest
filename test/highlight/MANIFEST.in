@@ -1,0 +1,32 @@
+# include patterns
+# <- comment
+
+include pat1 pat2
+# <- keyword
+
+recursive-include dir-pattern pat1 pat2
+# <- keyword
+
+global-include pat1 pat2
+# <- keyword
+
+graft dir-pattern
+# <- keyword
+
+prune **/__pycache__
+# <- keyword
+#     ^^ punctuation.special
+#       ^ punctuation.delimiter
+
+global-exclude [._]sw[a-p]
+# <- keyword
+#              ^ punctuation.bracket
+#               ^^ string.special
+#                 ^ punctuation.bracket
+#                     ^^^ string.special
+#                      ^ operator
+
+include \
+  \ #   ^ character.special
+  tests/[!._]*
+#        ^ operator
