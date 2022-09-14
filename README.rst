@@ -22,12 +22,12 @@ Usage
 
    import tree_sitter_pymanifest as pymanifest
 
-   with open('MANIFEST.in', 'rb') as mf:
+   with open('MANIFEST.in', 'r') as mf:
       # parse a MANIFEST.in file
       tree = pymanifest.parse(mf.read())
       # get the highlight groups
-      hl_groups = pymanifest.highlights(tree.root_node)
+      hl_groups = pymanifest.highlights(tree)
       # run an arbitrary query
       dir_patterns = pymanifest.query("""
       ((command dir_pattern: (pattern) @dir_pattern))
-      """).captures(tree.root_node)
+      """, tree.root_node)

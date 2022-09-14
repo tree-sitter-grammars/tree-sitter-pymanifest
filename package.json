@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-pymanifest",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "PyPA manifest grammar for tree-sitter",
   "repository": "ObserverOfTime/tree-sitter-pymanifest",

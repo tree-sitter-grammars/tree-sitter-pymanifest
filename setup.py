@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from pathlib import Path
+from shutil import copy
 from sys import platform
 
 from setuptools import Extension, setup
@@ -9,64 +10,48 @@ from wheel.bdist_wheel import bdist_wheel
 
 from tree_sitter import Language
 
-
 class BuildExt(build_ext):
-  def copy_extensions_to_source(self):
-    pass
+    def finalize_options(self):
+        super().finalize_options()
+        self._ts_lib = Path(self.build_lib).joinpath(
+            'tree_sitter_pymanifest', 'pymanifest'
+        ).with_suffix('.dll' if platform == 'win32' else '.so')
 
-  def build_extension(self, _):
-    lib = Path(__file__).with_name('src').joinpath(
-      'tree_sitter_pymanifest', 'pymanifest'
-    ).with_suffix('.dll' if platform == 'win32' else '.so')
-    Language.build_library(str(lib), [''])
+    def copy_extensions_to_source(self):
+        new_file = Path(__file__).parent.joinpath(
+            'src', 'tree_sitter_pymanifest', self._ts_lib.name
+        )
+        copy(self._ts_lib, new_file)
+
+    def build_extension(self, _):
+        Language.build_library(str(self._ts_lib), [''])
 
 
 class BdistWheel(bdist_wheel):
-  def get_tag(self):
-    python, abi, plat = super().get_tag()
-    if python.startswith('cp'):
-      python, abi = 'cp36', 'abi3'
-    if plat.endswith('universal2'):
-        python = 'cp38'
-    return python, abi, plat
+    def get_tag(self):
+        python, abi, plat = super().get_tag()
+        if python.startswith('cp'):
+            python, abi = 'cp37', 'abi3'
+        if plat.endswith('universal2'):
+            python = 'cp38'
+        return python, abi, plat
 
 
 setup(
-  name='tree-sitter-pymanifest',
-  version='0.1.1',
-  license='MIT',
-  author='ObserverOfTime',
-  author_email='chronobserver@disroot.org',
-  keywords=['tree-sitter', 'parser', 'lexer'],
-  description='A tree-sitter parser for MANIFEST.in files',
-  long_description=Path(__file__).with_name('README.rst').read_text(),
-  url='https://github.com/ObserverOfTime/tree-sitter-pymanifest',
-  packages=['tree_sitter_pymanifest'],
-  package_dir={'': 'src'},
-  package_data={
-    'tree_sitter_pymanifest': [
-      'pymanifest.so',
-      'pymanifest.dll',
-      'queries/*.scm'
-    ]
-  },
-  install_requires=['tree-sitter~=0.20'],
-  setup_requires=['tree-sitter', 'wheel'],
-  ext_modules=[
-    Extension(
-      name='tree_sitter_pymanifest',
-      sources=['pymanifest'],
-      py_limited_api=True
-    )
-  ],
-  cmdclass={
-    'bdist_wheel': BdistWheel,
-    'build_ext': BuildExt
-  },
-  classifiers=[
-    'Development Status :: 2 - Pre-Alpha',
-    'License :: OSI Approved :: MIT License',
-    'Topic :: Software Development :: Compilers',
-    'Topic :: Text Processing :: Linguistic',
-  ]
+    packages=[
+        'tree_sitter_pymanifest',
+        'tree_sitter_pymanifest.queries'
+    ],
+    package_dir={'': 'src'},
+    ext_modules=[
+        Extension(
+            name='tree_sitter_pymanifest',
+            sources=['pymanifest'],
+            py_limited_api=True
+        )
+    ],
+    cmdclass={
+        'bdist_wheel': BdistWheel,
+        'build_ext': BuildExt
+    }
 )

@@ -1,0 +1,37 @@
+[project]
+name = "tree-sitter-pymanifest"
+version = "0.2.0"
+description = "A tree-sitter parser for MANIFEST.in files"
+keywords = ["tree-sitter", "parser", "lexer"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Text Processing :: Linguistic"
+]
+dependencies = ["tree-sitter~=0.20"]
+requires-python = ">=3.7"
+
+[project.license]
+text = "MIT"
+
+[project.readme]
+file = "README.rst"
+content-type = "text/x-rst"
+
+[project.urls]
+Homepage = "https://github.com/ObserverOfTime/tree-sitter-pymanifest"
+Issues = "https://github.com/ObserverOfTime/tree-sitter-pymanifest/issues"
+Sponsor = "https://github.com/sponsors/ObserverOfTime"
+
+[[project.authors]]
+name = "ObserverOfTime"
+email = "chronobserver@disroot.org"
+
+[build-system]
+requires = [
+  "setuptools>=42",
+  "tree-sitter~=0.20",
+  "wheel"
+]
+build-backend = "setuptools.build_meta"

@@ -22,14 +22,11 @@ jobs:
           CIBW_ARCHS_WINDOWS: AMD64
           CIBW_ARCHS_MACOS: x86_64 universal2
           CIBW_SKIP: >-
-            cp36-macosx_universal2
+            cp37-macosx_universal2
             cp38-macosx_x86_64
             cp38-{win,*linux}*
-            cp3{7,9,10,11}-*
+            cp3{6,9,10,11}-*
             pp3?-*
-          CIBW_BEFORE_BUILD: |-
-            pip install tree-sitter~=0.20
-            python setup.py build_ext
         with:
           output-dir: dist
       - uses: actions/upload-artifact@v3
