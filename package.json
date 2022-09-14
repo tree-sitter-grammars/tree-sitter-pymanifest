@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-pymanifest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "description": "PyPA manifest grammar for tree-sitter",
   "repository": "ObserverOfTime/tree-sitter-pymanifest",
@@ -30,8 +30,8 @@
   "tree-sitter": [
     {
       "scope": "source.pymanifest",
-      "highlights": "tree_sitter_pymanifest/queries/highlights.scm",
-      "injections": "tree_sitter_pymanifest/queries/injections.scm",
+      "highlights": "src/tree_sitter_pymanifest/queries/highlights.scm",
+      "injections": "src/tree_sitter_pymanifest/queries/injections.scm",
       "file-types": ["MANIFEST.in"]
     }
   ]

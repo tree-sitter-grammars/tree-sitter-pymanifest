@@ -28,7 +28,7 @@ def highlights(tree):
   return query(data.decode()).captures(tree.root_node)
 
 __author__ = 'ObserverOfTime'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __license__ = 'MIT'
 
 __all__ = ['parse', 'query', 'highlights']

@@ -15,22 +15,25 @@ class BuildExt(build_ext):
     pass
 
   def build_extension(self, _):
-    lib = Path(__file__).with_name('tree_sitter_pymanifest') / 'pymanifest'
-    ext = '.dll' if platform == 'win32' else '.so'
-    Language.build_library(str(lib.with_suffix(ext)), [''])
+    lib = Path(__file__).with_name('src').joinpath(
+      'tree_sitter_pymanifest', 'pymanifest'
+    ).with_suffix('.dll' if platform == 'win32' else '.so')
+    Language.build_library(str(lib), [''])
 
 
 class BdistWheel(bdist_wheel):
   def get_tag(self):
     python, abi, plat = super().get_tag()
     if python.startswith('cp'):
-        return 'cp36', 'abi3', plat
+      python, abi = 'cp36', 'abi3'
+    if plat.endswith('universal2'):
+        python = 'cp38'
     return python, abi, plat
 
 
 setup(
   name='tree-sitter-pymanifest',
-  version='0.1.0',
+  version='0.1.1',
   license='MIT',
   author='ObserverOfTime',
   author_email='chronobserver@disroot.org',
@@ -39,6 +42,7 @@ setup(
   long_description=Path(__file__).with_name('README.rst').read_text(),
   url='https://github.com/ObserverOfTime/tree-sitter-pymanifest',
   packages=['tree_sitter_pymanifest'],
+  package_dir={'': 'src'},
   package_data={
     'tree_sitter_pymanifest': [
       'pymanifest.so',
@@ -47,7 +51,7 @@ setup(
     ]
   },
   install_requires=['tree-sitter~=0.20'],
-  setup_requires=['tree-sitter'],
+  setup_requires=['tree-sitter', 'wheel'],
   ext_modules=[
     Extension(
       name='tree_sitter_pymanifest',
