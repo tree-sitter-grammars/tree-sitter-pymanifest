@@ -31,9 +31,7 @@ class BdistWheel(bdist_wheel):
     def get_tag(self):
         python, abi, plat = super().get_tag()
         if python.startswith('cp'):
-            python, abi = 'cp37', 'abi3'
-        if plat.endswith('universal2'):
-            python = 'cp38'
+            python, abi = 'cp38', 'abi3'
         return python, abi, plat
 
 

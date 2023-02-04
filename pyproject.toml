@@ -1,6 +1,6 @@
 [project]
 name = "tree-sitter-pymanifest"
-version = "0.2.0"
+version = "0.2.1"
 description = "A tree-sitter parser for MANIFEST.in files"
 keywords = ["tree-sitter", "parser", "lexer"]
 classifiers = [
@@ -10,7 +10,7 @@ classifiers = [
     "Topic :: Text Processing :: Linguistic"
 ]
 dependencies = ["tree-sitter~=0.20"]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 
 [project.license]
 text = "MIT"
@@ -27,6 +27,18 @@ Sponsor = "https://github.com/sponsors/ObserverOfTime"
 [[project.authors]]
 name = "ObserverOfTime"
 email = "chronobserver@disroot.org"
+
+[tool.cibuildwheel]
+build = "cp38-*"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64"]
+
+[tool.cibuildwheel.windows]
+archs = ["amd64"]
+
+[tool.cibuildwheel.macos]
+archs = ["universal2"]
 
 [build-system]
 requires = [
