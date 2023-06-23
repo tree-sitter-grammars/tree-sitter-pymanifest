@@ -25,13 +25,12 @@
     "nan": "^2.17.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.7"
+    "tree-sitter-cli": "^0.20.8"
   },
   "tree-sitter": [
     {
       "scope": "source.pymanifest",
       "highlights": "src/tree_sitter_pymanifest/queries/highlights.scm",
-      "injections": "src/tree_sitter_pymanifest/queries/injections.scm",
       "file-types": ["MANIFEST.in"]
     }
   ]
