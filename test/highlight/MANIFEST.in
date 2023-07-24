@@ -27,6 +27,6 @@ global-exclude [._]sw[a-p]
 #                      ^ operator
 
 include \
-  \ #   ^ character.special
+  \ #   ^ escape
   tests/[!._]*
 #        ^ operator

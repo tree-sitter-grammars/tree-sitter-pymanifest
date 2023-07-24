@@ -35,7 +35,7 @@ build = "cp38-*"
 archs = ["x86_64"]
 
 [tool.cibuildwheel.windows]
-archs = ["amd64"]
+archs = ["AMD64"]
 
 [tool.cibuildwheel.macos]
 archs = ["universal2"]

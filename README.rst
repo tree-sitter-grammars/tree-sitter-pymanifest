@@ -14,7 +14,6 @@ Installation
 
    pip install tree-sitter-pymanifest
 
-
 Usage
 ^^^^^
 
@@ -29,5 +28,5 @@ Usage
       hl_groups = pymanifest.highlights(tree)
       # run an arbitrary query
       dir_patterns = pymanifest.query("""
-      ((command dir_pattern: (pattern) @dir_pattern))
+      (command dir_pattern: (pattern) @dir_pattern)
       """, tree.root_node)
