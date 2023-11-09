@@ -2,8 +2,6 @@
  * @file Tree-sitter grammar definition
  * @author ObserverOfTime
  * @license MIT
- * @see {@link https://packaging.python.org/en/latest/guides/using-manifest-in/#manifest-in-commands|commands}
- * @see {@link https://docs.python.org/3/library/fnmatch.html|fnmatch}
  */
 
 module.exports = grammar({
