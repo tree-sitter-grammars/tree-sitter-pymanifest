@@ -2,9 +2,7 @@
 tree-sitter-pymanifest
 ======================
 
-.. image:: https://badgen.net/github/checks/ObserverOfTime/tree-sitter-pymanifest?label=CI&icon=github
-   :target: https://github.com/ObserverOfTime/tree-sitter-pymanifest/actions/workflows/ci.yml
-   :alt: CI
+|CI| |discord| |matrix| |pypi|
 
 A tree-sitter parser for PyPA manifest files.
 
@@ -39,7 +37,7 @@ Usage
 References
 ----------
 
-* `MANIFEST.in commands <https://packaging.python.org/en/latest/guides/using-manifest-in/#manifest-in-commands>`_
+* `Controlling files in the distribution <https://setuptools.pypa.io/en/latest/userguide/miscellaneous.html>`_
 * `Unix filename pattern matching <https://docs.python.org/3/library/fnmatch.html>`_
 
 Editors
@@ -48,6 +46,7 @@ Editors
 | |c| Neovim
 | |u| Helix
 | |u| Emacs
+| |u| Zed
 
 .. |u| unicode:: U+00A0 U+00A0 U+2610
 .. |c| unicode:: U+00A0 U+00A0 U+2611
@@ -55,6 +54,11 @@ Editors
 
 Changelog
 ---------
+
+v0.3.0
+^^^^^^
+
+* Move to ``tree-sitter-grammars`` org
 
 v0.2.1
 ^^^^^^
@@ -72,3 +76,19 @@ v0.1.1
 ^^^^^^
 
 * Bundle queries in the package
+
+.. |CI| image:: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-pymanifest/test.yml?logo=github&label=CI
+   :target: https://github.com/tree-sitter-grammars/tree-sitter-pymanifest/actions/workflows/test.yml
+   :alt: CI
+
+.. |discord| image:: https://img.shields.io/discord/1063097320771698699?logo=discord&label=tree-sitter
+   :target: https://discord.gg/w7nTvsVJhm
+   :alt: discord
+
+.. |matrix| image:: https://img.shields.io/matrix/nvim-treesitter%3Amatrix.org?logo=matrix&label=nvim-treesitter
+   :target: https://matrix.to/#/#nvim-treesitter:matrix.org
+   :alt: matrix
+
+.. |pypi| image:: https://img.shields.io/pypi/v/tree-sitter-pymanifest?logo=pypi&logoColor=ffd242
+   :target: https://pypi.org/project/tree-sitter-pymanifest/
+   :alt: pypi

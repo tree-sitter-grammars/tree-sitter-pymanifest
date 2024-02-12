@@ -1,6 +1,6 @@
 [project]
 name = "tree-sitter-pymanifest"
-version = "0.2.1"
+version = "0.3.0"
 description = "A tree-sitter parser for MANIFEST.in files"
 keywords = ["tree-sitter", "parser", "lexer"]
 classifiers = [
@@ -20,8 +20,8 @@ file = "README.rst"
 content-type = "text/x-rst"
 
 [project.urls]
-Homepage = "https://github.com/ObserverOfTime/tree-sitter-pymanifest"
-Issues = "https://github.com/ObserverOfTime/tree-sitter-pymanifest/issues"
+Homepage = "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest"
+Issues = "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest/issues"
 Sponsor = "https://github.com/sponsors/ObserverOfTime"
 
 [[project.authors]]
