@@ -1,17 +1,20 @@
+from importlib.resources import files
 from pathlib import PurePath
-from pkg_resources import resource_filename
 from sys import platform
 
 from tree_sitter import Language, Parser
 
 _language = Language(
-    PurePath(__file__).with_name('pymanifest') \
-        .with_suffix('.dll' if platform == 'win32' else '.so'),
+    PurePath(__file__).with_name('pymanifest').with_suffix(
+        {'win32': '.dll', 'darwin': '.dylib'}.get(platform, '.so')
+    ),
     'pymanifest'
 )
 
 _parser = Parser()
 _parser.set_language(_language)
+
+_highlights = files(__package__) / 'queries' / 'highlights.scm'
 
 def parse(source):
     """Parse the given source code"""
@@ -25,6 +28,4 @@ def query(query, node):
 
 def highlights(tree):
     """Return the highlight groups for the given source tree"""
-    res = resource_filename(__package__, 'queries/highlights.scm')
-    with open(res, 'r') as hl:
-        return query(hl.read(), tree.root_node)
+    return query(_highlights.read_text(), tree.root_node)

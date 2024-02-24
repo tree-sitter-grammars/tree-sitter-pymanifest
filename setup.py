@@ -1,46 +1,52 @@
 #!/usr/bin/env python3
 
-from pathlib import Path
-from shutil import copy
-from sys import platform
+from pathlib import PurePath as Path
 
 from setuptools import Extension, setup
+from setuptools.command.build import build
 from setuptools.command.build_ext import build_ext
 from wheel.bdist_wheel import bdist_wheel
 
 from tree_sitter import Language
 
-class BuildExt(build_ext):
-    def finalize_options(self):
-        super().finalize_options()
-        self._ts_lib = Path(self.build_lib).joinpath(
-            'tree_sitter_pymanifest', 'pymanifest'
-        ).with_suffix('.dll' if platform == 'win32' else '.so')
+class Build(build):
+    def run(self):
+        source = Path(__file__).with_name('queries')
+        dest = Path(self.build_lib) / 'tree_sitter_pymanifest' / 'queries'
+        self.copy_tree(str(source), str(dest))
+        super().run()
 
+class BuildExt(build_ext):
     def copy_extensions_to_source(self):
-        new_file = Path(__file__).parent.joinpath(
-            'src', 'tree_sitter_pymanifest', self._ts_lib.name
+        lib_file = Path(__file__).parent.joinpath(
+            'bindings', 'python',
+            'tree_sitter_pymanifest',
+            self._ts_lib.name
         )
-        copy(self._ts_lib, new_file)
+        self.copy_file(str(self._ts_lib), str(lib_file))
 
     def build_extension(self, _):
+        self._ts_lib = Path(self.build_lib).joinpath(
+            'tree_sitter_pymanifest',
+            'pymanifest' + self.compiler.shared_lib_extension
+        )
         Language.build_library(str(self._ts_lib), [''])
 
 
 class BdistWheel(bdist_wheel):
     def get_tag(self):
-        python, abi, plat = super().get_tag()
+        python, abi, platform = super().get_tag()
         if python.startswith('cp'):
-            python, abi = 'cp38', 'abi3'
-        return python, abi, plat
+            python, abi = 'cp39', 'abi3'
+        return python, abi, platform
 
 
 setup(
-    packages=[
-        'tree_sitter_pymanifest',
-        'tree_sitter_pymanifest.queries'
-    ],
-    package_dir={'': 'src'},
+    packages=['tree_sitter_pymanifest'],
+    package_dir={'': 'bindings/python'},
+    package_data={
+        'tree_sitter_pymanifest.queries': ['*.scm']
+    },
     ext_modules=[
         Extension(
             name='tree_sitter_pymanifest',
@@ -50,6 +56,7 @@ setup(
     ],
     cmdclass={
         'bdist_wheel': BdistWheel,
-        'build_ext': BuildExt
+        'build_ext': BuildExt,
+        'build': Build
     }
 )

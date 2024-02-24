@@ -30,7 +30,7 @@
   "tree-sitter": [
     {
       "scope": "source.pymanifest",
-      "highlights": "src/tree_sitter_pymanifest/queries/highlights.scm",
+      "highlights": "queries/highlights.scm",
       "file-types": ["MANIFEST.in"]
     }
   ]
