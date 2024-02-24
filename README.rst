@@ -55,6 +55,11 @@ Editors
 Changelog
 ---------
 
+v0.4.0
+^^^^^^
+
+* Change bindings layout
+
 v0.3.0
 ^^^^^^
 
@@ -81,12 +86,12 @@ v0.1.1
    :target: https://github.com/tree-sitter-grammars/tree-sitter-pymanifest/actions/workflows/test.yml
    :alt: CI
 
-.. |discord| image:: https://img.shields.io/discord/1063097320771698699?logo=discord&label=tree-sitter
+.. |discord| image:: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord
    :target: https://discord.gg/w7nTvsVJhm
    :alt: discord
 
-.. |matrix| image:: https://img.shields.io/matrix/nvim-treesitter%3Amatrix.org?logo=matrix&label=nvim-treesitter
-   :target: https://matrix.to/#/#nvim-treesitter:matrix.org
+.. |matrix| image:: https://img.shields.io/matrix/tree-sitter-chat%3Amatrix.org?logo=matrix&label=matrix
+   :target: https://matrix.to/#/#tree-sitter-chat:matrix.org
    :alt: matrix
 
 .. |pypi| image:: https://img.shields.io/pypi/v/tree-sitter-pymanifest?logo=pypi&logoColor=ffd242
