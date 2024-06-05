@@ -1,23 +1,22 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "tree-sitter-pymanifest"
-version = "0.4.0"
-description = "A tree-sitter parser for MANIFEST.in files"
-keywords = ["tree-sitter", "parser", "lexer"]
+description = "PyPA manifest grammar for tree-sitter"
+version = "0.5.0"
+keywords = ["incremental", "parsing", "tree-sitter", "pymanifest"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
-    "Topic :: Software Development :: Compilers",
-    "Topic :: Text Processing :: Linguistic"
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Software Development :: Compilers",
+  "Topic :: Text Processing :: Linguistic",
+  "Typing :: Typed"
 ]
-dependencies = ["tree-sitter~=0.20"]
 requires-python = ">=3.9"
-
-[project.license]
-text = "MIT"
-
-[project.readme]
-file = "README.rst"
-content-type = "text/x-rst"
+license.text = "MIT"
+readme = "README.md"
 
 [project.urls]
 Homepage = "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest"
@@ -28,22 +27,9 @@ Sponsor = "https://github.com/sponsors/ObserverOfTime"
 name = "ObserverOfTime"
 email = "chronobserver@disroot.org"
 
+[project.optional-dependencies]
+core = ["tree-sitter~=0.22"]
+
 [tool.cibuildwheel]
 build = "cp39-*"
-
-[tool.cibuildwheel.linux]
-archs = ["x86_64"]
-
-[tool.cibuildwheel.windows]
-archs = ["AMD64"]
-
-[tool.cibuildwheel.macos]
-archs = ["universal2"]
-
-[build-system]
-requires = [
-  "setuptools>=42",
-  "tree-sitter~=0.20",
-  "wheel"
-]
-build-backend = "setuptools.build_meta"
+build-frontend = "build"

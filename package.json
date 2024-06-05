@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-pymanifest",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "MIT",
   "description": "PyPA manifest grammar for tree-sitter",
   "repository": "tree-sitter-grammars/tree-sitter-pymanifest",
@@ -15,23 +15,43 @@
     "lexer",
     "manifest"
   ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
   "scripts": {
-    "build": "tree-sitter generate --no-bindings",
-    "parse": "tree-sitter parse",
-    "test": "tree-sitter test"
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "main": "bindings/node",
+  "types": "bindings/node",
   "dependencies": {
-    "nan": "^2.18.0"
+    "node-addon-api": "^8.0.0",
+    "node-gyp-build": "^4.8.1"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.1"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "tree-sitter-cli": "~0.21.0"
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.1"
   },
   "tree-sitter": [
     {
       "scope": "source.pymanifest",
       "highlights": "queries/highlights.scm",
-      "file-types": ["MANIFEST.in"]
+      "file-types": [
+        "MANIFEST.in"
+      ]
     }
   ]
 }

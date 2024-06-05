@@ -1,9 +1,5 @@
-"""PyPA manifest parser"""
+"Pymanifest grammar for tree-sitter"
 
-from ._core import parse, query, highlights
+from ._binding import language
 
-__author__ = 'ObserverOfTime'
-__version__ = '0.4.0'
-__license__ = 'MIT'
-
-__all__ = ['parse', 'query', 'highlights']
+__all__ = ["language"]

@@ -1,4 +1,4 @@
-//! This crate provides pymanifest language support for the [tree-sitter][] parsing library.
+//! This crate provides PyPA manifest support for the [tree-sitter][] parsing library.
 //!
 //! Typically, you will use the [language][language func] function to add this language to a
 //! tree-sitter [Parser][], and then use the parser to parse some code:
@@ -9,7 +9,8 @@
 //! global-exclude *.py[cod]
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(tree_sitter_pymanifest::language()).expect("Error loading pymanifest grammar");
+//! let language = tree_sitter_pymanifest::language();
+//! parser.set_language(&language).expect("Error loading PyPA manifest grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! assert!(!tree.root_node().has_error());
 //! ```
@@ -46,7 +47,7 @@ mod tests {
     fn test_can_load_grammar() {
         let mut parser = tree_sitter::Parser::new();
         parser
-            .set_language(super::language())
-            .expect("Error loading pymanifest language");
+            .set_language(&super::language())
+            .expect("Error loading PyPA manifest grammar");
     }
 }

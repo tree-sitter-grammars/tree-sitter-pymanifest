@@ -1,21 +1,29 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_requirements_binding",
+      "target_name": "tree_sitter_pymanifest_binding",
+      "dependencies": [
+        "<!(node -p \"require('node-addon-api').targets\"):node_addon_api_except",
+      ],
       "include_dirs": [
-        "<!(node -e \"require('nan')\")",
-        "src"
+        "src",
       ],
       "sources": [
         "bindings/node/binding.cc",
-        "src/parser.c"
+        "src/parser.c",
       ],
-      "cflags_c": [
-        "-std=c99"
+      "conditions": [
+        ["OS!='win'", {
+          "cflags_c": [
+            "-std=c11",
+          ],
+        }, { # OS == "win"
+          "cflags_c": [
+            "/std:c11",
+            "/utf-8",
+          ],
+        }],
       ],
-      "cflags_cc": [
-        "-Wno-cast-function-type"
-      ]
     }
   ]
 }
