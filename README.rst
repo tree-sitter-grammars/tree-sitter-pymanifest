@@ -38,6 +38,11 @@ Editors
 Changelog
 ---------
 
+v0.5.1
+^^^^^^
+
+* Fix package description
+
 v0.5.0
 ^^^^^^
 
