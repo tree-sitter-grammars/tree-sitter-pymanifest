@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "pymanifest",
   "rules": {
     "manifest": {
@@ -609,5 +610,6 @@
   "inline": [
     "_lb_pattern"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
