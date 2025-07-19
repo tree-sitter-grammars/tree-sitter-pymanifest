@@ -1,11 +1,12 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_pymanifest
+from tree_sitter import Language, Parser
+import tree_sitter_pymanifest
 
 
 class TestLanguage(TestCase):
     def test_can_load_grammar(self):
         try:
-            tree_sitter.Language(tree_sitter_pymanifest.language())
+            Parser(Language(tree_sitter_pymanifest.language()))
         except Exception:
-            self.fail("Error loading pip pymanifest grammar")
+            self.fail("Error loading PyPA manifest grammar")

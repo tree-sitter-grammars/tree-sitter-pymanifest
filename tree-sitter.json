@@ -1,0 +1,30 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "pymanifest",
+      "title": "PyPA manifest",
+      "camelcase": "PyManifest",
+      "scope": "source.pymanifest",
+      "class-name": "TreeSitterPyManifest",
+      "highlights": "queries/highlights.scm",
+      "file-types": [
+        "MANIFEST.in"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "0.5.1",
+    "description": "PyPA manifest grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "ObserverOfTime",
+        "email": "chronobserver@disroot.org"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest",
+      "funding": "https://github.com/sponsors/ObserverOfTime"
+    }
+  }
+}
