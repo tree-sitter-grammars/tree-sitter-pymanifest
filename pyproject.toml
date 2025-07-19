@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=62.4.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,27 +9,25 @@ version = "0.5.1"
 keywords = ["incremental", "parsing", "tree-sitter", "pymanifest"]
 classifiers = [
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
-  "Typing :: Typed"
+  "Typing :: Typed",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license.text = "MIT"
 readme = "README.rst"
 
 [project.urls]
 Homepage = "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest"
-Issues = "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest/issues"
-Sponsor = "https://github.com/sponsors/ObserverOfTime"
+Funding = "https://github.com/sponsors/ObserverOfTime"
 
 [[project.authors]]
 name = "ObserverOfTime"
 email = "chronobserver@disroot.org"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.22"]
+core = ["tree-sitter~=0.24"]
 
 [tool.cibuildwheel]
-build = "cp39-*"
+build = "cp310-*"
 build-frontend = "build"

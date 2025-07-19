@@ -1,57 +1,52 @@
 {
   "name": "tree-sitter-pymanifest",
   "version": "0.5.1",
-  "license": "MIT",
   "description": "PyPA manifest grammar for tree-sitter",
-  "repository": "tree-sitter-grammars/tree-sitter-pymanifest",
+  "repository": "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest",
+  "funding": "https://github.com/sponsors/ObserverOfTime",
+  "license": "MIT",
   "author": {
     "name": "ObserverOfTime",
-    "email": "chronobserver@disroot.org",
-    "url": "https://observeroftime.github.io/"
+    "email": "chronobserver@disroot.org"
   },
+  "main": "bindings/node",
+  "types": "bindings/node",
   "keywords": [
+    "incremental",
+    "parsing",
     "tree-sitter",
-    "parser",
-    "lexer",
-    "manifest"
+    "pymanifest"
   ],
   "files": [
     "grammar.js",
+    "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
+    "src/**",
+    "*.wasm"
   ],
-  "scripts": {
-    "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip"
-  },
-  "main": "bindings/node",
-  "types": "bindings/node",
   "dependencies": {
-    "node-addon-api": "^8.0.0",
-    "node-gyp-build": "^4.8.1"
+    "node-addon-api": "^8.3.1",
+    "node-gyp-build": "^4.8.4"
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.25.8"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.1"
+    "tree-sitter": "^0.22.4"
   },
   "peerDependenciesMeta": {
-    "tree_sitter": {
+    "tree-sitter": {
       "optional": true
     }
   },
-  "devDependencies": {
-    "tree-sitter-cli": "^0.22.6",
-    "prebuildify": "^6.0.1"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.pymanifest",
-      "highlights": "queries/highlights.scm",
-      "file-types": [
-        "MANIFEST.in"
-      ]
-    }
-  ]
+  "scripts": {
+    "install": "node-gyp-build",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }
