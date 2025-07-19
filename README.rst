@@ -38,6 +38,12 @@ Editors
 Changelog
 ---------
 
+v0.6.0
+^^^^^^
+
+* Update bindings
+* Drop Python 3.9 support
+
 v0.5.1
 ^^^^^^
 

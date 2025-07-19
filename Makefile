@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-pymanifest
 HOMEPAGE_URL := https://github.com/tree-sitter-grammars/tree-sitter-pymanifest
-VERSION := 0.5.1
+VERSION := 0.6.0
 
 # repository
 SRC_DIR := src

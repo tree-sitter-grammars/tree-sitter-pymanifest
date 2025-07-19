@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-pymanifest
-        VERSION "0.5.1"
+        VERSION "0.6.0"
         DESCRIPTION "PyPA manifest grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/tree-sitter-grammars/tree-sitter-pymanifest"
         LANGUAGES C)
